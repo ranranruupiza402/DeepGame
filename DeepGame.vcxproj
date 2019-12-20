@@ -154,7 +154,10 @@
     <ClCompile Include="load.cpp" />
     <ClCompile Include="Looper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="System.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScene.h" />
@@ -163,7 +166,10 @@
     <ClInclude Include="IOnChangedListener.h" />
     <ClInclude Include="load.h" />
     <ClInclude Include="Looper.h" />
+    <ClInclude Include="Parameter.h" />
     <ClInclude Include="System.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
