@@ -1,2 +1,9 @@
-﻿  Define.cpp
+﻿  AbstractScene.cpp
+  GamePlayScene.cpp
+  Looper.cpp
+  Parameter.cpp
+  System.cpp
+c:\k018a1490\deepgame\system.cpp(19): warning C4305: 'return': 'int' から 'bool' へ切り詰めます。
+  TitleScene.cpp
+  コードを生成中...
   DeepGame.vcxproj -> C:\K018A1490\DeepGame\x64\Debug\DeepGame.exe

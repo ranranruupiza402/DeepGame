@@ -30,7 +30,7 @@ void System::end() const
 void System::main() const
 {
 	Looper loop;
-	while (!ScreenFlip() && !ProcessMessage() && !ClearDrawScreen)
+	while (!ScreenFlip() && !ProcessMessage() && !ClearDrawScreen())
 	{
 		if (!loop.loop()) {
 			break;

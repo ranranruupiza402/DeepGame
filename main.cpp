@@ -4,6 +4,7 @@
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	System system;
 	if (system.initialize()) {
+		system.main();
 		WaitKey();
 	}
 	system.end();
