@@ -1,5 +1,6 @@
 #pragma once
 #include "AbstractScene.h"
+#include "Boss.h"
 class GamePlayScene:public AbstractScene
 {
 public:
@@ -10,5 +11,8 @@ public:
 
 	void update()override;
 	void draw()override;
+
+private:
+	Boss _boss;
 };
 

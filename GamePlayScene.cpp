@@ -4,11 +4,14 @@
 GamePlayScene::GamePlayScene(IOnSceneChangedListener * impl, const Parameter & parameter)
 	:AbstractScene(impl,parameter)
 {
-	
+	_boss.Initialize();
 }
 
 void GamePlayScene::update()
 {
+	_boss.Update();
+
+	_boss.Render();
 }
 
 void GamePlayScene::draw()
