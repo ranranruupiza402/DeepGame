@@ -1,3 +1,2 @@
-﻿  GamePlayScene.cpp
-c:\k018a1490\deepgame\gameplayscene.cpp(31): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+﻿  TileMap.cpp
   DeepGame.vcxproj -> C:\K018A1490\DeepGame\x64\Debug\DeepGame.exe

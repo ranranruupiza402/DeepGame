@@ -34,6 +34,14 @@ float Vector2::dot(const Vector2 & v) const
 	return x * v.x + y * v.y;
 }
 
+//	演算子オーバーロード「+」
+Vector2 Vector2::operator + (const Vector2& vec) {
+
+	Vector2 t(this->x + vec.x, this->y + vec.y);
+
+	return t;
+}
+
 //単項演算子+
 Vector2 Vector2::operator+() const
 {

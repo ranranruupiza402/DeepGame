@@ -17,6 +17,7 @@
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScene.h" />
@@ -38,5 +39,6 @@
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>

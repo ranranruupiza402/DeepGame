@@ -161,6 +161,7 @@
     <ClCompile Include="Looper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Parameter.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Looper.h" />
     <ClInclude Include="Parameter.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Task.h" />

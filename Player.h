@@ -4,6 +4,8 @@
 class Player
 {
 public:
+	Player() {};
+	~Player() = default;
 	void Start();
 
 	void Render();

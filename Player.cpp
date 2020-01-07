@@ -1,6 +1,5 @@
-#include "Player.h"
-#include <DxLib.h>
-
+#include"Player.h"
+#include "Dxlib.h"
 
 void Player::Start()
 {
@@ -9,7 +8,7 @@ void Player::Start()
 	_grp = LoadGraph("player.png");
 	_size = Vector2(32, 32);
 	_radius = 16;
-	_position = Vector2(150, 654);
+	_position = Vector2(350, 654);
 	_velocity = Vector2(0, 0);
 	 dashDownSpeed =0.5f;
 	 dashSpeed = 0;
@@ -21,7 +20,7 @@ void Player::Start()
 
 void Player::Render()
 {
-	DrawGraph(_position.x, _position.y, _grp, FALSE);
+	DrawGraph(_position.x, _position.y, _grp, TRUE);
 }
 
 void Player::Update()
@@ -63,7 +62,7 @@ void Player::Update()
 
 	DashDownSpeed();
 	DashSpeed();
-	_position += _velocity + (Vector2(_velocity.x, _velocity.y)*dashSpeed);
+	//_position += _velocity + (Vector2(_velocity.x, _velocity.y)*dashSpeed);
 }
 
 void Player::Release()
@@ -80,7 +79,7 @@ void Player::UpdatePosition(bool hitX, bool hitY)
 	if (hitY)
 		_velocity.y = 0;
 	
-
+	_position += _velocity + (Vector2(_velocity.x, _velocity.y)*dashSpeed);;
 }
 
 void Player::DashDownSpeed()
@@ -105,4 +104,3 @@ void Player::DashDownSpeed()
 	}
 
 }
-
