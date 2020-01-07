@@ -2,6 +2,7 @@
 #include <DxLib.h>
 #include"Define.h"
 #include"GamePlayScene.h"
+#include"Keyboard.h"
 
 TitleScene::TitleScene(IOnSceneChangedListener* impl, const Parameter& parameter) 
 	: AbstractScene(impl, parameter)
@@ -10,7 +11,7 @@ TitleScene::TitleScene(IOnSceneChangedListener* impl, const Parameter& parameter
 
 void TitleScene::update()
 {
-	if (CheckHitKey(KEY_INPUT_SPACE)) {
+	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_E)==1) {
 		Parameter parameter;
 		const bool stackClear = false;
 		_implSceneChanged->onSceneChanged(eScene::GamePlay, parameter, stackClear);

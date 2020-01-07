@@ -1,6 +1,8 @@
 #include "Looper.h"
 #include"TitleScene.h"
 #include "GamePlayScene.h"
+#include "Keyboard.h"
+#include "Image.h"
 
 using namespace std;
 
@@ -11,6 +13,7 @@ Looperでやることは更新や描画を指示するだけにしたい
 
 Looper::Looper()
 {
+	Image::getIns()->load();
 	Parameter parameter;
 	_sceneStack.push(make_shared<TitleScene>(this, parameter)); //タイトル画面シーンを作ってpush
 }
@@ -18,8 +21,9 @@ Looper::Looper()
 /*スタックされているシーンのトップのシーンの処理をする*/
 bool Looper::loop() const
 {
-	_sceneStack.top()->update();
-	_sceneStack.top()->draw();
+	Keyboard::getIns()->update();//キーボードの更新
+	_sceneStack.top()->update();//スタックのトップのシーンを更新
+	_sceneStack.top()->draw();//スタックのトップのシーンを描画
 	return true;
 }
 
