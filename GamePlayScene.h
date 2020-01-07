@@ -5,6 +5,7 @@
 #include "TileMap.h"
 #include "Boss.h"
 #include "BossShot.h"
+#include"Player.h"
 
 class GamePlayScene:public AbstractScene
 {
@@ -20,6 +21,7 @@ private:
 private:
 	Boss _boss;
 	BossShot bossShot;
+	Player _player;
 	int i;
 };
 
