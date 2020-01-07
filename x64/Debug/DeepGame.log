@@ -1,29 +1,3 @@
-﻿  AbstractScene.cpp
-  Boss.cpp
-c:\k018a1490\deepgame\boss.h(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  BossShot.cpp
-c:\k018a1490\deepgame\bullet.h(3): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  Bullet.cpp
-c:\k018a1490\deepgame\bullet.h(3): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  BulletCache.cpp
-c:\k018a1490\deepgame\bulletcache.h(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  Define.cpp
-  GamePlayScene.cpp
-c:\k018a1490\deepgame\boss.h(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  Image.cpp
-c:\k018a1490\deepgame\image.cpp(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  Keyboard.cpp
-c:\k018a1490\deepgame\keyboard.cpp(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  Looper.cpp
-c:\k018a1490\deepgame\boss.h(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  main.cpp
-c:\k018a1490\deepgame\main.cpp(1): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  Parameter.cpp
-  System.cpp
-c:\k018a1490\deepgame\system.cpp(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  TileMap.cpp
-c:\k018a1490\deepgame\tilemap.cpp(5): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  TitleScene.cpp
-c:\k018a1490\deepgame\titlescene.cpp(2): fatal error C1083: include ファイルを開けません。'DxLib.h':No such file or directory
-  Vector2.cpp
-  コードを生成中...
+﻿  GamePlayScene.cpp
+c:\k018a1490\deepgame\gameplayscene.cpp(31): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+  DeepGame.vcxproj -> C:\K018A1490\DeepGame\x64\Debug\DeepGame.exe
