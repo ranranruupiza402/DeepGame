@@ -1,18 +1,1 @@
-<<<<<<< HEAD
-﻿  Image.cpp
-c:\k018a1490\deepgame\image.cpp(13): warning C4267: '初期化中': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-c:\k018a1490\deepgame\image.cpp(13): warning C4267: '初期化中': 'size_t' から 'const int' に変換しました。データが失われているかもしれません。
-  Looper.cpp
-  TileMap.cpp
-=======
-﻿  Boss.cpp
-c:\users\k018a1498\desktop\deepgame\boss.cpp(2): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
-c:\users\k018a1498\desktop\deepgame\boss.cpp(27): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-c:\users\k018a1498\desktop\deepgame\boss.cpp(100): warning C4804: '<=': 演算中の 'bool' 型の使用方法が安全ではありません
-  GamePlayScene.cpp
-c:\users\k018a1498\desktop\deepgame\gameplayscene.cpp(24): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-  Looper.cpp
-  TitleScene.cpp
->>>>>>> tatsuya
-  コードを生成中...
-  DeepGame.vcxproj -> C:\Users\K018A1498\Desktop\DeepGame\x64\Debug\DeepGame.exe
+﻿  DeepGame.vcxproj -> C:\Users\K018A1498\Desktop\DeepGame\x64\Debug\DeepGame.exe
