@@ -1,3 +1,7 @@
-﻿  Player.cpp
-c:\k018a1490\deepgame\player.cpp(27): warning C4554: '&': 演算子の優先順位に問題があります。かっこを使用して優先順位を明確にしてください
+﻿  Image.cpp
+c:\k018a1490\deepgame\image.cpp(13): warning C4267: '初期化中': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+c:\k018a1490\deepgame\image.cpp(13): warning C4267: '初期化中': 'size_t' から 'const int' に変換しました。データが失われているかもしれません。
+  Looper.cpp
+  TileMap.cpp
+  コードを生成中...
   DeepGame.vcxproj -> C:\K018A1490\DeepGame\x64\Debug\DeepGame.exe

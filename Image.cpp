@@ -4,6 +4,8 @@
 Image::Image()
 {
 	_player = myLoadGraph("Texture/Player.png");
+	_tileMap = myLoadGraph("Texture/pipo-map001.png");
+
 }
 
 void Image::relese()
@@ -19,6 +21,10 @@ int Image::getPlayer() const
 {
 	return _player;
 }
+int Image::getTileMap() const
+{
+	return _tileMap;
+}
 
 int Image::myLoadGraph(const char * FileName)
 {
@@ -28,7 +34,7 @@ int Image::myLoadGraph(const char * FileName)
 	return handle;
 }
 
-int Image::myLoadDivGraph(char * FileName, int AllNum, int XNum, int YNum, int XSize, int YSize, int * HandleBuf)
+int Image::myLoadDivGraph(const char * FileName, int AllNum, int XNum, int YNum, int XSize, int YSize, int * HandleBuf)
 {
 	int handle;
 	handle = LoadDivGraph(FileName,AllNum,XNum,YNum,XSize,YSize,HandleBuf);
