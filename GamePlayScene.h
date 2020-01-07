@@ -5,6 +5,7 @@
 #include "TileMap.h"
 #include "Boss.h"
 #include "BossShot.h"
+#include "Lazer.h"
 
 class GamePlayScene:public AbstractScene
 {
@@ -20,6 +21,7 @@ private:
 private:
 	Boss _boss;
 	BossShot bossShot;
+	Lazer lazer;
 	int i;
 };
 

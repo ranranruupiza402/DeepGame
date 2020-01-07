@@ -120,12 +120,12 @@ void Boss::rollBeam()
 {
 
 	aroundShot = false;
-	shot = false;
 	
 	
 	if (_pos.x >= Define::WIN_WIDTH / 2)
 	{
 		_pos.x -= _velocity.x;
+		shot = false;
 		return;
 	}
 

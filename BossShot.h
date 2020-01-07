@@ -2,6 +2,7 @@
 #include<list>
 #include"Vector2.h"
 #include"Bullet.h"
+#include"Lazer.h"
 #include"BulletCache.h"
 #include"Define.h"
 
@@ -14,6 +15,8 @@ public:
 	//’e‚ğŒ‚‚Â
 	void Shot(const Vector2& pos);
 	void Shot(const Vector2& pos, float angle);
+
+	void LazerShot(const Vector2& pos, float angle);
 
 	//ˆ—‚ÌXV
 	void Update();

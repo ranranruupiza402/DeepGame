@@ -10,6 +10,7 @@ GamePlayScene::GamePlayScene(IOnSceneChangedListener * impl, const Parameter & p
 	//_player = make_shared<Player>();
 	_tileMap = make_shared<TileMap>();
 	_boss.Initialize();
+	lazer.Initialize(_boss.Position());
 	i = 0;
 }
 
@@ -32,8 +33,18 @@ void GamePlayScene::update()
 		}
 	}
 
+	if (_boss.Pattern() == 4 && _boss.Shot() == true)
+	{
+		lazer.SetActive(true);
+	}
+
+
+	lazer.Update();
+
+
 	_boss.Render();
 	bossShot.Render();
+	lazer.Render();
 
 	DrawBox(10+i, 600,40+i ,640 , GetColor(0, 255, 255), FALSE);
 
