@@ -9,7 +9,7 @@ void Player::Start()
 	_grp = LoadGraph("player.png");
 	_size = Vector2(32, 32);
 	_radius = 16;
-	_position = Vector2(150, 500);
+	_position = Vector2(150, 654);
 	_velocity = Vector2(0, 0);
 	 dashDownSpeed =0.5f;
 	 dashSpeed = 0;
@@ -42,16 +42,16 @@ void Player::Update()
 	}
 	_position.y -= Jump;
 	Jump -= 1;
-	if (_position.y > 500)
+	if (_position.y > 654)
 	{
-		_position.y = 500;
+		_position.y = 654;
 		Jump = 0;
 		Jump2 = FALSE;
 		Jump3 = FALSE;
 
 	}
 
-	if ((key&PAD_INPUT_1)&&_position.y==500&&Jump2==FALSE&&Jump3==FALSE)
+	if ((key&PAD_INPUT_1)&&_position.y==654&&Jump2==FALSE&&Jump3==FALSE)
 	{
 		Jump = 20;
 		Jump2 = TRUE;
@@ -63,6 +63,7 @@ void Player::Update()
 
 	DashDownSpeed();
 	DashSpeed();
+	_position += _velocity + (Vector2(_velocity.x, _velocity.y)*dashSpeed);
 }
 
 void Player::Release()
@@ -79,7 +80,7 @@ void Player::UpdatePosition(bool hitX, bool hitY)
 	if (hitY)
 		_velocity.y = 0;
 	
-	_position += _velocity+(Vector2(_velocity.x,_velocity.y)*dashSpeed);
+
 }
 
 void Player::DashDownSpeed()
@@ -100,7 +101,7 @@ void Player::DashDownSpeed()
 
 	if ((key&PAD_INPUT_2)&&dashSpeed==0)
 	{
-		dashSpeed =10;
+		dashSpeed =3;
 	}
 
 }

@@ -10,6 +10,7 @@ GamePlayScene::GamePlayScene(IOnSceneChangedListener * impl, const Parameter & p
 	//_player = make_shared<Player>();
 	_tileMap = make_shared<TileMap>();
 	_boss.Initialize();
+	_player.Start();
 	i = 0;
 }
 
@@ -18,9 +19,9 @@ void GamePlayScene::update()
 	//_player->update();
 	//auto info = _tileMap->FindTileHitInfo(_player.Position(),_palyer.Size(),_player.Velocity());
 
-	_tileMap->draw();
+	//_tileMap->draw();
 	i++;
-
+	_player.Update();
 	_boss.Update();
 	bossShot.Update();
 
@@ -32,6 +33,7 @@ void GamePlayScene::update()
 		}
 	}
 
+	_player.Render();
 	_boss.Render();
 	bossShot.Render();
 
