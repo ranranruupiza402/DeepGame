@@ -1,6 +1,8 @@
 #pragma once
 #include "AbstractScene.h"
 #include "Boss.h"
+#include "BossShot.h"
+
 class GamePlayScene:public AbstractScene
 {
 public:
@@ -14,5 +16,7 @@ public:
 
 private:
 	Boss _boss;
+	BossShot bossShot;
+	int i;
 };
 
