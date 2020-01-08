@@ -7,7 +7,7 @@ using namespace std;
 GamePlayScene::GamePlayScene(IOnSceneChangedListener * impl, const Parameter & parameter)
 	:AbstractScene(impl, parameter)
 {
-	//_player = make_shared<Player>();
+	
 	_tileMap = make_shared<TileMap>();
 	_boss.Initialize();
 	_player.Start();

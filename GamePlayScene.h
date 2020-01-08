@@ -6,6 +6,7 @@
 #include "Boss.h"
 #include "BossShot.h"
 #include"Player.h"
+#include"PlayerAttak.h"
 
 class GamePlayScene:public AbstractScene
 {
