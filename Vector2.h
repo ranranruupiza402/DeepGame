@@ -10,7 +10,9 @@ struct Vector2
 	//メンバ関数
 	float length() const;//ノルム
 	Vector2& normalize();//正規化
-	float dot(const Vector2& v)const;//内積
+	float dot(const Vector2& v)const;
+	Vector2 operator+(const Vector2 & vec);
+	//内積
 
 	//単項演算子オーバーロード
 	Vector2 operator + ()const;

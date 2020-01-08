@@ -4,7 +4,6 @@
 Image::Image()
 {
 	_player = myLoadGraph("Texture/Player.png");
-	_tileMap = myLoadGraph("Texture/pipo-map001.png");
 
 }
 

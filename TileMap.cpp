@@ -1,14 +1,22 @@
-#include "TileMap.h"
-#include <sstream>
-#include <fstream>
-#include "Image.h"
-#include "DxLib.h"
+#include<DxLib.h>
+#include<fstream>
+#include<sstream>
+#include"TileMap.h"
+#include "GamePlayScene.h"
+#include"Player.h"
 
-using namespace std;
-TileMap::TileMap()
+//初期化
+void TileMap::Start()
 {
-	ifstream ifs("csv/map.csv");
-	if (ifs) {
+	//画像の読み込み
+	_mapgrp = LoadGraph("Texture\\pipo-map001.png");
+
+	//マップを読み込む
+	std::ifstream ifs("csv\\map.csv");
+
+	//読み込みに成功したら
+	if (ifs)
+	{
 		//1行ずつ読み込む
 		std::string line;
 		while (std::getline(ifs, line))
@@ -20,49 +28,57 @@ TileMap::TileMap()
 			_map.push_back(data);
 		}
 	}
-	_tileSize=40;
+
+	//タイルマップのサイズ指定
+	_tileSize = 40;
 }
 
-void TileMap::draw()
+void TileMap::Render()
 {
+	//Xの位置とYの位置
 	int x = 0, y = 0;
-	for (auto row : _map) {
+
+	//マップ情報を行単位で読み込む
+	for (auto row : _map)
+	{
 		x = 0;
-		for (auto col : row) {
-			DrawRectGraph(x*_tileSize, y*_tileSize, 0, 0, _tileSize, _tileSize, Image::getIns()->getTileMap(), true);
+		//マップ情報を取得
+		for (auto col : row)
+		{
+			//下地の描画
+			DrawRectGraph(x*_tileSize, y*_tileSize, 0, 0, _tileSize, _tileSize, _mapgrp, true);
 
 			//マップの描画
-			int destX = col % 10;
-			int destY = (col / 10) % 10;
+			auto destX = col % 10;
+			auto destY = (col / 10) % 10;
 
-			DrawRectGraph(x*_tileSize, y*_tileSize,
-				destX*_tileSize, destY*_tileSize,
-				_tileSize, _tileSize, Image::getIns()->getTileMap(), true);
+			DrawRectGraph(x*_tileSize, y*_tileSize, destX*_tileSize, destY*_tileSize, _tileSize, _tileSize, _mapgrp, true);
 
 			//X方向にマップタイルを1つ分進める
 			x++;
 		}
-		//y方向にマップタイルを1つ進める
+		//Y方向にマップタイルを1つ分進める
 		y++;
 	}
 }
 
-TileHitInfo TileMap::FindTileHitInfo(const Vector2 & pos, const Vector2 & size, const Vector2 & velocity)
+//現在位置＋サイズ+velocityから現在の衝突情報を取得する
+TileHitInfo TileMap::FindTileHitInfo(const Vector2& pos, const Vector2& size, const Vector2& velocity)
 {
 	//判定を行うキャラの中心座標を取得
 	Vector2 center = Vector2((pos.x) + (size.x / 2), (pos.y) + (size.y / 2));
 
 	//X方向の判定
-	auto hitx = TileColl(center, size, Vector2(velocity.x, 0));
+	auto hitx = TileCollision(center, size, Vector2(velocity.x, 0));
 	//Y方向の座標
-	auto hity = TileColl(center, size, Vector2(0, velocity.y));
+	auto hity = TileCollision(center, size, Vector2(0, velocity.y));
 
 	//衝突結果を格納する
 	TileHitInfo info = { false,false,0 };
 
 	//AND演算子を使用して衝突している場合は”1”、そうじゃなければ”0”とする
-	info._hitX = (hitx & 1);
-	info._hitY = (hity & 1);
+	info._hitx = (hitx & 1);
+	info._hity = (hity & 1);
 
 	//衝突したオブジェクト番号を取得する
 	info._no = (hitx >> 8) | (hity >> 8);
@@ -70,7 +86,8 @@ TileHitInfo TileMap::FindTileHitInfo(const Vector2 & pos, const Vector2 & size, 
 	return info;
 }
 
-int TileMap::TileColl(const Vector2 & pos, const Vector2 & size, const Vector2 & velocity)
+//タイルマップの衝突判定を行う
+int TileMap::TileCollision(const Vector2 & pos, const Vector2 & size, const Vector2 & velocity)
 {
 	auto sizeX = static_cast<int>(size.x / 2);
 	auto sizeY = static_cast<int>(size.y / 2);
@@ -89,25 +106,29 @@ int TileMap::TileColl(const Vector2 & pos, const Vector2 & size, const Vector2 &
 			continue;
 
 		//0ではない場合、何かしらのオブジェクトに衝突した
-		if (_map[y][x] > 0)
+		if (_map[y][x] != 0 )
 		{
-			//下位8ビットに衝突フラグ、上位8ビットに衝突したオブジェクトを代入
-			return 1 | (_map[y][x] << 8);
+			if (_map[y][x] != 10) {
+				//下位8ビットに衝突フラグ、上位8ビットに衝突したオブジェクトを代入
+				return 1 | (_map[y][x] << 8);
+			}
+
 		}
 	}
 
+	//当たってない
 	return 0;
 }
 
-vector<int> TileMap::Split(const string & str, char delim)
+std::vector<int>TileMap::Split(const std::string&str, char delim)
 {
-	stringstream iss(str);
-	string tmp;
-	vector<int>mapRow;
+	std::stringstream iss(str);
+	std::string tmp;
+	std::vector<int>mapRow;
 
-	while (getline(iss,tmp,delim))
-	{
-		mapRow.push_back(atoi(tmp.c_str()));
-	}
+	//文字列をカンマ区切るで読み込む
+	while (getline(iss, tmp, delim))
+		mapRow.push_back(std::atoi(tmp.c_str()));
+
 	return mapRow;
 }
