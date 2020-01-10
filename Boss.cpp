@@ -71,7 +71,7 @@ void Boss::moveField()
 	_pos.x += _velocity.x;
 	if (_elapsedTime >= 1)
 	{
- 		_pattern = 1;
+ 		_pattern = 4;
 	}
 }
 
@@ -120,12 +120,12 @@ void Boss::rollBeam()
 {
 
 	aroundShot = false;
-	shot = false;
 	
 	
 	if (_pos.x >= Define::WIN_WIDTH / 2)
 	{
 		_pos.x -= _velocity.x;
+		shot = false;
 		return;
 	}
 

@@ -18,6 +18,11 @@ void BossShot::Shot(const Vector2& pos, float angle)
 	_shotList.push_back(shot);
 }
 
+void BossShot::LazerShot(const Vector2& pos, float angle)
+{
+	
+}
+
 void BossShot::Update()
 {
 	//イテレータを使用
