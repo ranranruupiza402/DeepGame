@@ -16,10 +16,10 @@ GamePlayScene::GamePlayScene(IOnSceneChangedListener * impl, const Parameter & p
 
 void GamePlayScene::update()
 {
-	//_player->update();
-	//auto info = _tileMap->FindTileHitInfo(_player.Position(),_palyer.Size(),_player.Velocity());
+	_player->update();
+	auto info = _tileMap->FindTileHitInfo(_player.Position(),_palyer.Size(),_player.Velocity());
 
-	//_tileMap->draw();
+	_tileMap->draw();
 	i++;
 	_player.Update();
 	_boss.Update();
