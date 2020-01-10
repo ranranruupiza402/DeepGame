@@ -27,6 +27,8 @@ void Lazer::Initialize(Vector2 pos)
 
 	_charge = 0;
 
+	_rotate = 0;
+
 	float velocity = 4.0f;
 
 	isExtend = false;
@@ -34,16 +36,18 @@ void Lazer::Initialize(Vector2 pos)
 	isRoll = false;
 
 	SetActive(false);
-}
 
+	img = image.getPlayer();
+}
 void Lazer::Render()
 {
 	if (!isActive)return;
 
-	img = DrawBox(_position.x, _position.y, _position.x - _size.x, _position.y - _size.y, GetColor(255, 0, 255), FALSE);
-	if (isRoll)
+	DrawBox(_position.x + 32, _position.y - 500, _position.x+32, _position.y, GetColor(255, 0, 255), FALSE);
+
+	if (isRoll&&_rotate/60<=90)
 	{
-		DrawRotaGraph2(Define::WIN_WIDTH/2,Define::WIN_HEGHT,_position.x, _position.y, 1.0, Define::PI / 2, DrawBox(_position.x, _position.y, _position.x - _size.x, _position.y - _size.y, GetColor(255, 0, 255), FALSE), FALSE, FALSE);
+		DrawBox(_position.x, _position.y, _rollpos.x, _rollpos.y, GetColor(255, 0, 255), TRUE);
 	}
 }
 
@@ -58,7 +62,14 @@ void Lazer::Update()
 
 	Extend();
 
-	Rotation();
+	
+
+	if (isRoll&&_charge%60==0)
+	{
+		_rotate++;
+		Rotation(&_rollpos.x, &_rollpos.y, _position.x + 32, _position.y, _position.x, _position.y - 1.2);
+	}
+
 }
 
 void Lazer::SetActive(bool value)
@@ -66,13 +77,18 @@ void Lazer::SetActive(bool value)
 	isActive = value;
 }
 
+void Lazer::SetRote(bool value)
+{
+	isRoll = value;
+}
+
 void Lazer::Extend()
 {
 	if (!isExtend)return;
 
-	if (_size.y <= 720&&_charge%60==3)
+	if (_size.y <= 500&&_charge%60==3)
 	{
-		_size.y += 0.1;
+		_size.y += 1;
 
 		return;
 	}
@@ -84,13 +100,12 @@ void Lazer::Extend()
 		return;
 	}
 
-	isRoll = true;
+	SetRote(true);
 }
 
-void Lazer::Rotation()
+//pos_x,pos_y‚É’l‚ª•Ô‚éAx,y‚Í‰ñ“]‚³‚¹‚é‚à‚ÌAxc,yc‚Í‰ñ“]‚Ì’†SAangle‚Í‰ñ“]‚³‚¹‚éŠp“x
+void Lazer::Rotation(float *pos_x, float *pos_y, float x, float y, float xc, float yc)
 {
-	if (!isRoll)return;
-	
-	
-
+	*pos_x = (x - xc)*cos(1.0) - (y - yc)*sin(1.0) + xc;
+	*pos_y = (x - xc)*sin(1.0) + (y - yc)*cos(1.0) + yc;
 }

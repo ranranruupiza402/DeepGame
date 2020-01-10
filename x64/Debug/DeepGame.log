@@ -1,7 +1,9 @@
 ﻿  Lazer.cpp
 c:\users\k018a1498\desktop\deepgame\lazer.cpp(13): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
-c:\users\k018a1498\desktop\deepgame\lazer.cpp(43): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
 c:\users\k018a1498\desktop\deepgame\lazer.cpp(46): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-c:\users\k018a1498\desktop\deepgame\lazer.cpp(75): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
-c:\users\k018a1498\desktop\deepgame\lazer.cpp(83): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+c:\users\k018a1498\desktop\deepgame\lazer.cpp(50): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\k018a1498\desktop\deepgame\lazer.cpp(70): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\k018a1498\desktop\deepgame\lazer.cpp(99): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+c:\users\k018a1498\desktop\deepgame\lazer.cpp(109): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\k018a1498\desktop\deepgame\lazer.cpp(110): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
   DeepGame.vcxproj -> C:\Users\K018A1498\Desktop\DeepGame\x64\Debug\DeepGame.exe
