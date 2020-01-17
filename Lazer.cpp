@@ -21,13 +21,15 @@ Lazer::~Lazer()
 
 }
 
-void Lazer::Initialize(Vector2 pos)
+void Lazer::Initialize(Vector2 pos,Vector2 angleX)
 {
 	_position = pos;
 
 	_charge = 0;
 
 	_rotate = 0;
+
+	_angle = angleX.x;
 
 	float velocity = 4.0f;
 
@@ -45,7 +47,7 @@ void Lazer::Render()
 
 	DrawBox(_position.x + 32, _position.y - 500, _position.x+32, _position.y, GetColor(255, 0, 255), FALSE);
 
-	if (isRoll&&_rotate/60<=90)
+	if (isRoll)
 	{
 		DrawBox(_position.x, _position.y, _rollpos.x, _rollpos.y, GetColor(255, 0, 255), TRUE);
 	}
@@ -64,10 +66,11 @@ void Lazer::Update()
 
 	
 
-	if (isRoll&&_charge%60==0)
+	if (isRoll)
 	{
 		_rotate++;
-		Rotation(&_rollpos.x, &_rollpos.y, _position.x + 32, _position.y, _position.x, _position.y - 1.2);
+		int rota = _rotate % 60;
+		Rotation(&_rollpos.x, &_rollpos.y, _position.x + 32+rota, _position.y+rota, _position.x, _position.y - 1.2,_angle);
 	}
 
 }
@@ -103,9 +106,9 @@ void Lazer::Extend()
 	SetRote(true);
 }
 
-//pos_x,pos_y‚É’l‚ª•Ô‚éAx,y‚Í‰ñ“]‚³‚¹‚é‚à‚ÌAxc,yc‚Í‰ñ“]‚Ì’†SAangle‚Í‰ñ“]‚³‚¹‚éŠp“x
-void Lazer::Rotation(float *pos_x, float *pos_y, float x, float y, float xc, float yc)
+//pos_x,pos_y‚É’l‚ª•Ô‚éAx,y‚Í‰ñ“]‚³‚¹‚é‚à‚ÌAxc,yc‚Í‰ñ“]‚Ì’†SA1.0‚Í‰ñ“]‚³‚¹‚éŠp“x
+void Lazer::Rotation(float *pos_x, float *pos_y, float x, float y, float xc, float yc, float angle)
 {
-	*pos_x = (x - xc)*cos(1.0) - (y - yc)*sin(1.0) + xc;
-	*pos_y = (x - xc)*sin(1.0) + (y - yc)*cos(1.0) + yc;
+	*pos_x = (x - xc)*cos(angle) - (y - yc)*sin(angle) + xc;
+	*pos_y = (x - xc)*sin(angle) + (y - yc)*cos(angle) + yc;
 }

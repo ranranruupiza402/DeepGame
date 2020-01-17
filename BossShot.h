@@ -15,8 +15,8 @@ public:
 	//’e‚ğŒ‚‚Â
 	void Shot(const Vector2& pos);
 	void Shot(const Vector2& pos, float angle);
+	void Shot(const Vector2& pos,int *posNum);
 
-	void LazerShot(const Vector2& pos, float angle);
 
 	//ˆ—‚ÌXV
 	void Update();
@@ -24,7 +24,20 @@ public:
 	//•`‰æ
 	void Render();
 
+	Vector2 Position();
+	
+	int BulletCount()
+	{
+		return bulletcnt;
+	}
+
 public:
 	std::list<Bullet*>_shotList;
+	std::list<AroundW*>_aroundList;
+	std::list<CreateW*>_crewallList;
 	BulletCache _cache;
+	BulletCache _around;
+	BulletCache _crewall;
+
+	int bulletcnt=0;
 };

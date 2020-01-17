@@ -1,5 +1,5 @@
 #include "Boss.h"
-#include "Define.h";
+#include "Define.h"
 
 //èâä˙âª
 void Boss::Initialize()
@@ -78,7 +78,18 @@ void Boss::moveField()
 //ï«Çê∂ê¨
 void Boss::createWall()
 {
-	
+	aroundShot = false;
+
+	if (_shotspace % 30==0)
+	{
+		aroundShot = true;
+	}
+
+	if (_shotspace % 120 == 0)
+	{
+		shot = true;
+		aroundShot = false;
+	}
 
 	if (_pos.x <= 1124)
 	{
@@ -87,19 +98,11 @@ void Boss::createWall()
 		return;
 	}
 
+	_hp -= 1;
 
-	if (_shotspace % 30 == 0)
+	if (_hp <= (_hp_max / 5 *3))
 	{
-
-		aroundShot = true;
-		shot = true;
-	}
-
-	_hp -= 10;
-
-	if (_hp <= (_hp_max / 4 == 3))
-	{
-		_pattern=4;
+		_pattern=3;
 	}
 }
 
@@ -112,7 +115,30 @@ void Boss::createFloor()
 //ï«à⁄ìÆÇ∑ÇÈíe
 void Boss::aroundWall()
 {
-	aroundShot = true;
+	if (_shotspace % 30 == 0)
+	{
+		aroundShot = true;
+	}
+
+	if(_pos.x<=Define::WIN_WIDTH-200)
+	{
+		_pos.x += _velocity.x;
+		shot = false;
+		return;
+	}
+
+	if (_shotspace % 120 == 0)
+	{
+		shot = true;
+		aroundShot = false;
+	}
+
+	_hp -= 1;
+
+	if (_hp <= (_hp_max / 4))
+	{
+		_pattern = 4;
+	}
 }
 
 //ÉrÅ[ÉÄì„Ç¨ï•Ç¢

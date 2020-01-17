@@ -18,6 +18,8 @@
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Lazer.cpp" />
+    <ClCompile Include="AroundWall.cpp" />
+    <ClCompile Include="CreateWall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScene.h" />
@@ -40,5 +42,7 @@
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Lazer.h" />
+    <ClInclude Include="AroundWall.h" />
+    <ClInclude Include="CreateWall.h" />
   </ItemGroup>
 </Project>

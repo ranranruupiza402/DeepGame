@@ -13,7 +13,7 @@ public:
 	//デストラクタ
 	~Lazer();
 
-	void Initialize(Vector2 pos);
+	void Initialize(Vector2 pos,Vector2 angleX);
 
 	void Render();
 
@@ -25,7 +25,7 @@ public:
 
 	void Extend();
 
-	void Rotation(float * pos_x,float * pos_Y,float x,float y,float xc,float yc);
+	void Rotation(float * pos_x, float * pos_Y, float x, float y, float xc, float yc, float angle);
 
 	Vector2 Position()
 	{
@@ -40,6 +40,7 @@ public:
 private:
 	int _charge;
 	int _rotate;
+	float _angle;
 	Vector2 _position;
 	Vector2 _size;
 	Vector2 _velocity;
