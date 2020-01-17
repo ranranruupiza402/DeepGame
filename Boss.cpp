@@ -71,7 +71,7 @@ void Boss::moveField()
 	_pos.x += _velocity.x;
 	if (_elapsedTime >= 1)
 	{
- 		_pattern = 4;
+ 		_pattern = 1;
 	}
 }
 

@@ -1,27 +1,26 @@
 #include "GamePlayScene.h"
 #include<DxLib.h>
-//#include "TileMap.h"
+#include "TileMap.h"
 #include "Define.h"
 
 using namespace std;
 GamePlayScene::GamePlayScene(IOnSceneChangedListener * impl, const Parameter & parameter)
-	:AbstractScene(impl, parameter)
-{
-	
-//	_tileMap = make_shared<TileMap>();
+	:AbstractScene(impl, parameter), _tileMap(make_shared<TileMap>())
+{	
+	_tileMap->Start();
 	_boss.Initialize();
-	//_player.Start();
+	_player = make_shared<Player>();
+	_player->Start();
 	i = 0;
 }
 
 void GamePlayScene::update()
 {
-	//_player->Update();
-	//auto info = _tileMap->FindTileHitInfo(_player.Position(),_player.Size(),_player.Velocity());
-
-//	_tileMap->Render();
+	_player->Update();
+	auto info = _tileMap->FindTileHitInfo(_player->Position(),_player->Size(),_player->Velocity());
+	_player->UpdatePosition(info._hitx, info._hity);
+	_tileMap->Render();
 	i++;
-	//_player.Update();
 	_boss.Update();
 
 	if (_boss.AroundShot() == true)
@@ -46,17 +45,14 @@ void GamePlayScene::update()
 	bossShot.Update();
 
 
-	//_player.Render();
+	_player->Render();
 	_boss.Render();
 	bossShot.Render();
-
-	//DrawBox(10+i, 600,40+i ,640 , GetColor(0, 255, 255), FALSE);
 
 	DrawBox(0, 685, Define::WIN_WIDTH, Define::WIN_HEGHT, GetColor(0, 255, 255), FALSE);
 }
 
 void GamePlayScene::draw()
 {
-	//_player->draw();
 	DrawFormatString(100, 100, GetColor(255, 255, 255), "GamePlay‚Å‚·");
 }

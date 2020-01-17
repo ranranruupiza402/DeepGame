@@ -20,6 +20,8 @@
     <ClCompile Include="Lazer.cpp" />
     <ClCompile Include="AroundWall.cpp" />
     <ClCompile Include="CreateWall.cpp" />
+    <ClCompile Include="PlayerAttak.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScene.h" />
@@ -44,5 +46,7 @@
     <ClInclude Include="Lazer.h" />
     <ClInclude Include="AroundWall.h" />
     <ClInclude Include="CreateWall.h" />
+    <ClInclude Include="PlayerAttak.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>

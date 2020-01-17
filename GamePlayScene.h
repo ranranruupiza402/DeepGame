@@ -1,8 +1,8 @@
 #pragma once
 #include "AbstractScene.h"
 #include<memory>
-//#include "Player.h"
-//#include "TileMap.h"
+#include "Player.h"
+#include "TileMap.h"
 #include "Boss.h"
 #include "BossShot.h"
 #include "Lazer.h"
@@ -17,8 +17,8 @@ public:
 	void update()override;
 	void draw()override;
 private:
-//	std::shared_ptr<Player>_player;
-//	std::shared_ptr<TileMap>_tileMap;
+	std::shared_ptr<Player>_player;
+	std::shared_ptr<TileMap>_tileMap;
 private:
 	Boss _boss;
 	BossShot bossShot;

@@ -1,36 +1,30 @@
-#include "Player.h"
-#include <DxLib.h>
-
+#include"Player.h"
+#include "Dxlib.h"
 
 void Player::Start()
 {
+	speed = -16;
 	_gravity = 2;
 	_grp = LoadGraph("player.png");
 	_size = Vector2(32, 32);
 	_radius = 16;
-	_position = Vector2(150, 654);
+	_position = Vector2(350, 654);
 	_velocity = Vector2(0, 0);
-	 dashDownSpeed =0.5f;
-	 dashSpeedCount = 0;
-	 _hp = 1;
-	 dashSpeed = 0;
-	 Jump2 = FALSE;
-	 Jump3 = FALSE;
-	 playerEnd = FALSE;
-	 MaxJumpCount = 2;
-	 JumpCount = 0;
-	
+	dashDownSpeed = 0.5f;
+	dashSpeed = 0;
+	Jump2 = FALSE;
+	Jump3 = FALSE;
+	MaxJumpCount = 2;
+	JumpCount = 0;
 }
 
 void Player::Render()
 {
-	if (playerEnd)return;
-	DrawGraph(_position.x, _position.y, _grp, FALSE);
+	DrawGraph(_position.x, _position.y, _grp, TRUE);
 }
 
 void Player::Update()
 {
-	if (playerEnd)return;
 	//	キー入力を更新
 	int key = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 
@@ -68,9 +62,7 @@ void Player::Update()
 
 	DashDownSpeed();
 	DashSpeed();
-	Attak();
-	IsHit();
-	_position += _velocity + (Vector2(_velocity.x, _velocity.y)*dashSpeed);
+	//_position += _velocity + (Vector2(_velocity.x, _velocity.y)*dashSpeed);
 }
 
 void Player::Release()
@@ -86,8 +78,8 @@ void Player::UpdatePosition(bool hitX, bool hitY)
 	//	Y方向に衝突
 	if (hitY)
 		_velocity.y = 0;
-	
 
+	_position += _velocity + (Vector2(_velocity.x, _velocity.y)*dashSpeed);
 }
 
 void Player::DashDownSpeed()
@@ -97,8 +89,6 @@ void Player::DashDownSpeed()
 		dashSpeed = 0;
 	}
 
-	if (!(dashSpeedCount > 0))return;
-	dashSpeedCount -= dashDownSpeed;
 	if (!(dashSpeed > 0)) return;
 
 	dashSpeed -= dashDownSpeed;
@@ -109,12 +99,12 @@ void Player::Attak()
 
 	if (key&PAD_INPUT_3)
 	{
-		_playerAttak.Position();
+		//_playerAttak.Position();
 	}
 }
 void Player::IsHit()
 {
-	//if (_bossShot.Position==_position.y&&_bossShot.Position==_position.x)
+	//if (_bossShot.getPosition.y==_position.y&&_bossShot.getPosition.x==_position.x)
 	//{
 	//	_hp -= 1;
 	//}
@@ -130,13 +120,8 @@ void Player::DashSpeed()
 	int key = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 
 
-	if ((key&PAD_INPUT_2) && dashSpeed == 0 && dashSpeedCount == 0)
+	if ((key&PAD_INPUT_2) && dashSpeed == 0)
 	{
 		dashSpeed = 3;
-		dashSpeedCount = 120;
 	}
-
 }
-
- 
-

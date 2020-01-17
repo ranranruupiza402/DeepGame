@@ -9,7 +9,7 @@
 void TileMap::Start()
 {
 	//画像の読み込み
-	_mapgrp = LoadGraph("Texture\\pipo-map001.png");
+	_mapgrp = LoadGraph("Texture\\pipo-map111.png");
 
 	//マップを読み込む
 	std::ifstream ifs("csv\\map.csv");
@@ -108,7 +108,7 @@ int TileMap::TileCollision(const Vector2 & pos, const Vector2 & size, const Vect
 		//0ではない場合、何かしらのオブジェクトに衝突した
 		if (_map[y][x] != 0 )
 		{
-			if (_map[y][x] != 10) {
+			if (_map[y][x] != 1) {
 				//下位8ビットに衝突フラグ、上位8ビットに衝突したオブジェクトを代入
 				return 1 | (_map[y][x] << 8);
 			}

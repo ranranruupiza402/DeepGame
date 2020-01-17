@@ -19,17 +19,10 @@ Bullet::Bullet(Vector2 pos, float angle) : _position(pos), _size(Vector2(16, 16)
 	_velocity = Vector2(x, y);
 }
 
-//デストラクタ
-Bullet::~Bullet()
-{
-
-}
-
 //初期化
 void Bullet::Initialize(Vector2 pos, float angle)
 {
 	_position = pos;
-
 	float velocity = 4.0f;
 	double x = cos((Define::PI / 180)*angle)*velocity;
 	double y = sin((Define::PI / 180)*angle)*velocity;

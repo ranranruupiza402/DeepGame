@@ -10,7 +10,7 @@ public:
 	//角度をつける
 	Bullet(Vector2 pos, float angle);
 	//デストラクタ
-	~Bullet();
+	~Bullet()=default;
 
 	void Initialize(Vector2 pos, float angle);
 
@@ -20,13 +20,10 @@ public:
 
 	void SetActive(bool value);
 
-	Vector2 Position()
-	{
+	Vector2 Position() {
 		return _position;
 	}
-
-	Vector2 Size()
-	{
+	Vector2 size() {
 		return _size;
 	}
 

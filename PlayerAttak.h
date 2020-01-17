@@ -6,7 +6,6 @@ class PlayerAttak
 {
 public:
 	void Start(Vector2 pos);
-//	PlayerAttak(Vector2 pos);
 
 	void Update();
 

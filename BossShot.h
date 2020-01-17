@@ -38,6 +38,7 @@ public:
 	BulletCache _cache;
 	BulletCache _around;
 	BulletCache _crewall;
+	Vector2 bulletPos;
 
 	int bulletcnt=0;
 };
