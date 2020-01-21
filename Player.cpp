@@ -1,8 +1,11 @@
 #include"Player.h"
-#include "Dxlib.h"
+#include <Dxlib.h>
+#include<memory>
+
 
 void Player::Start()
 {
+	//boss = new Boss();
 	speed = -16;
 	_gravity = 2;
 	_grp = LoadGraph("player.png");
@@ -14,8 +17,12 @@ void Player::Start()
 	dashSpeed = 0;
 	Jump2 = FALSE;
 	Jump3 = FALSE;
+	_hp = 1;
+	playerEnd = FALSE;
 	MaxJumpCount = 2;
 	JumpCount = 0;
+	
+	
 }
 
 void Player::Render()
@@ -25,6 +32,8 @@ void Player::Render()
 
 void Player::Update()
 {
+	if (playerEnd == TRUE)
+		return;
 	//	キー入力を更新
 	int key = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 
@@ -60,13 +69,20 @@ void Player::Update()
 		Jump = 20;
 	}
 
+	
+	
 	DashDownSpeed();
 	DashSpeed();
+	if (_hp <= 0)
+	{
+		playerEnd = TRUE;
+	}
 	//_position += _velocity + (Vector2(_velocity.x, _velocity.y)*dashSpeed);
 }
 
 void Player::Release()
 {
+	
 }
 
 void Player::UpdatePosition(bool hitX, bool hitY)
@@ -104,15 +120,7 @@ void Player::Attak()
 }
 void Player::IsHit()
 {
-	//if (_bossShot.getPosition.y==_position.y&&_bossShot.getPosition.x==_position.x)
-	//{
-	//	_hp -= 1;
-	//}
-
-	if (_hp < 0)
-	{
-		playerEnd = TRUE;
-	}
+	
 
 }
 void Player::DashSpeed()
