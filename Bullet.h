@@ -12,7 +12,7 @@ public:
 	//デストラクタ
 	~Bullet()=default;
 
-	void Initialize(Vector2 pos, float angle);
+	void Initialize(Vector2 pos, float angle,float radius);
 
 	void Render();
 
@@ -27,10 +27,17 @@ public:
 		return _size;
 	}
 
+    float* Radius()
+	{
+		return radius;
+	}
+
 private:
 	Vector2 _position;	//座標
 	Vector2 _size;		//大きさ
 	Vector2 _velocity;	//加速度
+	float _radius;
+	float* radius;
 	int img;			//画像
 	bool isActive;		//表示非表示
 };

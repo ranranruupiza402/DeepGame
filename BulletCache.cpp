@@ -24,7 +24,7 @@ BulletCache::~BulletCache()
 	}
 }
 
-Bullet*BulletCache::Instance(Vector2 pos, float angle)
+Bullet*BulletCache::Instance(Vector2 pos, float angle,float *radius)
 {
 	//キャッシュがある場合
 	if (_cache.size() > 0)
@@ -32,7 +32,7 @@ Bullet*BulletCache::Instance(Vector2 pos, float angle)
 		//キャッシュを取得
 		auto bullet = _cache.front();
 		//初期化
-		bullet->Initialize(pos, angle);
+		bullet->Initialize(pos, angle,*radius);
 
 		_cache.pop();
 		return bullet;
@@ -41,7 +41,7 @@ Bullet*BulletCache::Instance(Vector2 pos, float angle)
 	//インスタンスを生成
 	auto bullet = new Bullet();
 	//初期化
-	bullet->Initialize(pos, angle);
+	bullet->Initialize(pos, angle,*radius);
 
 	return bullet;
 }

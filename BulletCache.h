@@ -14,13 +14,13 @@ public:
 	~BulletCache();
 
 	//弾を生成するキャッシュがあるかどうか
-	Bullet*Instance(Vector2 pos, float angle);
+	Bullet*Instance(Vector2 pos, float angle,float *radius);
 
 	AroundW*Instance(Vector2 pos);
 
 	CreateW*Instance(Vector2 pos, int posNum);
 
-	Lazer*Instance(Vector2 pos, Vector2 angleX);
+	//Lazer*Instance(Vector2 pos, Vector2 angleX);
 
 	//弾をキャッシュする
 	void Cache(Bullet* bullet);
