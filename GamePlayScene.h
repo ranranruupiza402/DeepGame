@@ -16,14 +16,20 @@ public:
 
 	void update()override;
 	void draw()override;
+
+	bool Collition(const Vector2 plPos,Vector2 size, const Vector2 bulletPos,float *bulletRad);
 private:
 	std::shared_ptr<Player>_player;
 	std::shared_ptr<TileMap>_tileMap;
+	std::shared_ptr<BossShot>bossShot;
 private:
+	std::vector < Vector2>_posList;
+
 	Boss _boss;
-	BossShot bossShot;
 	Lazer lazer;
 	AroundW around;
-	int i;
+	//int i;
+	float* bullRad;
+	float bulletRad = 8.0f;
 };
 

@@ -13,9 +13,9 @@ public:
 	~BossShot();
 
 	//’e‚ğŒ‚‚Â
-	void Shot(const Vector2& pos);
-	void Shot(const Vector2& pos, float angle);
-	void Shot(const Vector2& pos,int *posNum);
+	void AroundWall(const Vector2& pos);
+	void ShotBullet(const Vector2& pos, float angle,float *radius);
+	void CreateWall(const Vector2& pos,int *posNum);
 
 
 	//ˆ—‚ÌXV
@@ -24,15 +24,18 @@ public:
 	//•`‰æ
 	void Render();
 
-	Vector2 Position();
+	Vector2 Position(int num);
+
+	float* Radius();
 	
 	int BulletCount()
 	{
 		return bulletcnt;
 	}
 
+
 public:
-	std::list<Bullet*>_shotList;
+	std::vector<Bullet*>_shotList;
 	std::list<AroundW*>_aroundList;
 	std::list<CreateW*>_crewallList;
 	BulletCache _cache;
@@ -40,5 +43,7 @@ public:
 	BulletCache _crewall;
 	Vector2 bulletPos;
 
+
 	int bulletcnt=0;
+	float _radius;
 };

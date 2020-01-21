@@ -21,6 +21,7 @@ void Player::Start()
 void Player::Render()
 {
 	DrawGraph(_position.x, _position.y, _grp, TRUE);
+	DrawCircle(_position.x, _position.y, 5, GetColor(255, 255, 255), TRUE);
 }
 
 void Player::Update()

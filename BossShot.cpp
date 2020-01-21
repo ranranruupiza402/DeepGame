@@ -8,35 +8,37 @@ BossShot::~BossShot()
 		delete shot;
 	}
 
-	for (auto around : _aroundList)
-	{
-		delete around;
-	}
-	for (auto crewall : _crewallList)
-	{
-		delete crewall;
-	}
+for (auto around : _aroundList)
+{
+	delete around;
+}
+for (auto crewall : _crewallList)
+{
+	delete crewall;
+}
 }
 
 
 //‹…‚ð”­ŽË‚·‚é
-void BossShot::Shot(const Vector2& pos, float angle)
+void BossShot::ShotBullet(const Vector2& pos, float angle, float *radius)
 {
+	_radius = *radius;
+	bulletPos = pos;
 	//’e‚ð“®“I‚É¶¬
-	Bullet*shot = _cache.Instance(pos, angle);
+	Bullet*shot = _cache.Instance(pos, angle, radius);
 	//’e‚ðƒŠƒXƒg‚ÉŠi”[
 	_shotList.push_back(shot);
 }
 
 //‹…‚ð”­ŽË(•Ç‚ð‚Ü‚í‚é)
-void BossShot::Shot(const Vector2& pos)
+void BossShot::AroundWall(const Vector2& pos)
 {
 	AroundW*around = _around.Instance(pos);
 	bulletcnt++;
 	_aroundList.push_back(around);
 }
 
-void BossShot::Shot(const Vector2& pos, int *posNum)
+void BossShot::CreateWall(const Vector2& pos, int *posNum)
 {
 	CreateW*crewall = _crewall.Instance(pos, *posNum);
 
@@ -50,8 +52,8 @@ void BossShot::Update()
 	{
 		(*it)->Update();
 
-		if ((*it)->Position().x > Define::WIN_WIDTH|| (*it)->Position().y > Define::WIN_HEGHT
-			|| (*it)->Position().x < 0|| (*it)->Position().y< 0)
+		if ((*it)->Position().x > Define::WIN_WIDTH || (*it)->Position().y > Define::WIN_HEGHT
+			|| (*it)->Position().x < 0 || (*it)->Position().y < 0)
 		{
 			_cache.Cache(*it);
 			it = _shotList.erase(it);
@@ -88,11 +90,44 @@ void BossShot::Update()
 	}
 }
 
-Vector2 BossShot::Position()
+Vector2 BossShot::Position(int num)
+{
+	if (_shotList.size() < num)
+	{
+		return Vector2(0, 0);
+	}
+
+		return _shotList[num]->Position();
+		
+		/*int hoge = test;
+
+	for (auto&& bullet:_shotList)
+	{
+		_posList.push_back(bullet->Position&Position);
+	}*/
+
+	/*for (auto it = _shotList.begin(); it != _shotList.end();)
+	{
+		if ((*it)->Position().x <= Define::WIN_WIDTH || (*it)->Position().y <= Define::WIN_HEGHT
+			|| (*it)->Position().x >= 0 || (*it)->Position().y >= 0)
+		{ 
+			return (*it)->Position();
+			continue;
+        }
+		++it;
+    }*/
+}
+
+float* BossShot::Radius()
 {
 	for (auto it = _shotList.begin(); it != _shotList.end();)
 	{
-		return (*it)->Position();
+		if ((*it)->Position().x <= Define::WIN_WIDTH || (*it)->Position().y <= Define::WIN_HEGHT
+			|| (*it)->Position().x >= 0 || (*it)->Position().y >= 0)
+		{
+			return (*it)->Radius();
+			continue;
+		}
 		++it;
 	}
 }
