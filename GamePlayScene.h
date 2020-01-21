@@ -14,6 +14,8 @@ public:
 	GamePlayScene(IOnSceneChangedListener*impl,const Parameter&parameter);
 	virtual~GamePlayScene()=default;
 
+	bool Collition(const Vector2 plPos, Vector2 size, const Vector2 bulletPos, float *bulletRad);
+
 	void update()override;
 	void draw()override;
 private:
@@ -25,6 +27,8 @@ private:
 	BossShot bossShot;
 	Lazer lazer;
 	AroundW around;
-	int i;
+
+	std::vector<Vector2>_posList;
+	//int i;
 };
 
