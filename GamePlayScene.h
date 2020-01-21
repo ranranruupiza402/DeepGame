@@ -19,8 +19,9 @@ public:
 private:
 	std::shared_ptr<Player>_player;
 	std::shared_ptr<TileMap>_tileMap;
+	std::shared_ptr<Boss>_boss;
 private:
-	Boss _boss;
+	//Boss* boss;
 	BossShot bossShot;
 	Lazer lazer;
 	AroundW around;

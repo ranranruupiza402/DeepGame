@@ -1,6 +1,8 @@
 #pragma once
 #include"Vector2.h"
 #include "Bullet.h"
+#include"Boss.h"
+#include<memory>
 
 class Player
 {
@@ -19,22 +21,30 @@ public:
 	void IsHit();
 	void DashSpeed();
 	void DashDownSpeed();
+	//void IsHitBoss( Boss &boss);
 
 	void Attak();
-	Vector2 Position() const { return _position; }
-	Vector2 Size() const { return _size; }
-	float Radius() const { return _radius; }
+	//ç¿ïWÇï‘Ç∑
+	Vector2 Position()
+	{
+		return _position;
+	}
 
+	//ëÂÇ´Ç≥Çï‘Ç∑
+	Vector2 Size()
+	{
+		return _size;
+	}
 	Vector2 Velocity() {
 		return _velocity;
 	}
 public:
-
+	std::shared_ptr<Boss>boss;
 	int _grp;
-	Vector2 _size;
-	Vector2 _position;
-	float _radius;
 	float _gravity;
+	Vector2 _position;
+	Vector2 _size;
+	float _radius;
 	Vector2 _velocity;
 	int _hp;
 	float speed;

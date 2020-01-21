@@ -2,10 +2,10 @@
 #include "Define.h"
 
 //初期化
-void Boss::Initialize()
+void Boss::Start()
 {
 	_size = Vector2(32, 32);
-	_pos = Vector2(500, 500);
+	_position = Vector2(500, 500);
 	_velocity = Vector2(1, 0);
 	_hp_max = 5000;
 	_hp = _hp_max;
@@ -24,7 +24,7 @@ void Boss::Initialize()
 //描画
 void Boss::Render()
 {
-	DrawBox(_pos.x, _pos.y, _pos.x + _size.x, _pos.y + _size.y, GetColor(0, 0, 255), FALSE);
+	DrawBox(_position.x, _position.y, _position.x + _size.x, _position.y + _size.y, GetColor(0, 0, 255), FALSE);
 }
 
 //更新
@@ -68,7 +68,7 @@ void Boss::Release()
 //ボスが移動
 void Boss::moveField()
 {
-	_pos.x += _velocity.x;
+	_position.x += _velocity.x;
 	if (_elapsedTime >= 1)
 	{
  		_pattern = 1;
@@ -91,9 +91,9 @@ void Boss::createWall()
 		aroundShot = false;
 	}
 
-	if (_pos.x <= 1124)
+	if (_position.x <= 1124)
 	{
-		_pos.x += _velocity.x;
+		_position.x += _velocity.x;
 
 		return;
 	}
@@ -120,9 +120,9 @@ void Boss::aroundWall()
 		aroundShot = true;
 	}
 
-	if(_pos.x<=Define::WIN_WIDTH-200)
+	if(_position.x<=Define::WIN_WIDTH-200)
 	{
-		_pos.x += _velocity.x;
+		_position.x += _velocity.x;
 		shot = false;
 		return;
 	}
@@ -148,9 +148,9 @@ void Boss::rollBeam()
 	aroundShot = false;
 	
 	
-	if (_pos.x >= Define::WIN_WIDTH / 2)
+	if (_position.x >= Define::WIN_WIDTH / 2)
 	{
-		_pos.x -= _velocity.x;
+		_position.x -= _velocity.x;
 		shot = false;
 		return;
 	}
