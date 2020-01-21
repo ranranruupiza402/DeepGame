@@ -22,13 +22,16 @@ private:
 	std::shared_ptr<Player>_player;
 	std::shared_ptr<TileMap>_tileMap;
 	std::shared_ptr<Boss>_boss;
+	std::shared_ptr<BossShot>bossShot;
 private:
+	std::vector<Vector2>_posList;
+	
 	//Boss* boss;
-	BossShot bossShot;
 	Lazer lazer;
 	AroundW around;
-
-	std::vector<Vector2>_posList;
 	//int i;
+
+	float* bullRad;
+	float bulletRad = 8.0f;
 };
 

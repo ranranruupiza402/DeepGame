@@ -14,7 +14,7 @@ GamePlayScene::GamePlayScene(IOnSceneChangedListener * impl, const Parameter & p
 	_boss->Start();
 	_player = make_shared<Player>();
 	_player->Start();
-
+	bossShot = make_shared<BossShot>();
 	bullRad = &bulletRad;
 	//i = 0;
 }
@@ -29,7 +29,7 @@ void GamePlayScene::update()
 	//i++;
 	_boss->Update();
 	
-	bossShot.Update();
+	bossShot->Update();
 
 	if (_boss->AroundShot() == true)
 	{
@@ -66,7 +66,7 @@ void GamePlayScene::update()
 
 	_player->Render();
 	_boss->Render();
-	bossShot.Render();
+	bossShot->Render();
 	auto dx = abs(((int)_player->Position().x + (int)_player->Size().x / 2) - ((int)_boss->Position().x + (int)_boss->Size().x / 2));
 	auto dy = abs(((int)_player->Position().y + (int)_player->Size().y / 2) - ((int)_boss->Position().y + (int)_boss->Size().y / 2));
 	if (dx < (_player->Size().x + _boss->Size().x) / 2 && dy < (_player->Size().y + _boss->Size().y) / 2)
