@@ -1,3 +1,6 @@
 ﻿  GamePlayScene.cpp
-c:\k018a1490\deepgame\gameplayscene.cpp(30): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-  DeepGame.vcxproj -> C:\K018A1490\DeepGame\x64\Debug\DeepGame.exe
+c:\users\ranra\desktop\deepgame\gameplayscene.cpp(34): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+  Player.cpp
+c:\users\ranra\desktop\deepgame\player.cpp(30): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  コードを生成中...
+  DeepGame.vcxproj -> C:\Users\ranra\Desktop\DeepGame\x64\Debug\DeepGame.exe

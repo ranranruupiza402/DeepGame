@@ -1,12 +1,11 @@
 #pragma once
 #include<DxLib.h>
 #include"Vector2.h"
-
 class Boss
 {
 public:
 	//初期化
-	void Initialize();
+	void Start();
 
 	//描画
 	void Render();
@@ -27,7 +26,7 @@ public:
 	//座標を返す
 	Vector2 Position()
 	{
-		return _pos;
+		return _position;
 	}
 
 	//大きさを返す
@@ -63,7 +62,7 @@ private:
 	int _startTime;		//行動開始した時間
 	int _elapsedTime;	//現在に経過時間
 	int _shotspace;		//弾の発射間隔用
-	Vector2 _pos;		//座標
+	Vector2 _position;		//座標
 	Vector2 _size;		//大きさ
 	Vector2 _velocity;	//加速度
 	double _speed;		//速さ
