@@ -35,6 +35,12 @@ public:
 	{
 		return _size;
 	}
+	
+	float Radius()
+	{
+		return _radius;
+	}
+
 	Vector2 Velocity() {
 		return _velocity;
 	}

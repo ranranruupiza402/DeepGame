@@ -31,7 +31,7 @@ void GamePlayScene::update()
 	
 	bossShot->Update();
 
-	if (_boss->AroundShot() == true)
+	if(_boss->AroundShot() == true)
 	{
 		for (float i = 1; i <= 360; i += 45)
 		{
@@ -44,7 +44,12 @@ void GamePlayScene::update()
 		}
 		for (int i = 0; i < _posList.size(); i++)
 		{
-			Collition(_player->Position(), _player->Size(), _posList[i], bossShot->Radius());
+			//	Collition(_player->Position(), _player->Size(), _posList[i], bossShot->Radius());
+
+			if (CircleCollition(_player->Position(), _player->Size(), _player->Radius(), _posList[i], bulletRad))
+			{
+				_player->_hp -= 1;
+			}
 		}
 		_posList.clear();
 	}
@@ -53,11 +58,39 @@ void GamePlayScene::update()
 	{
 		int posNum = GetRand(4);
 		bossShot->CreateWall(_boss->Position(), &posNum);
+
+		for (int i = 0; i < bossShot->_crewallList.size(); i++)
+		{
+			_crewallPosList.push_back(bossShot->CWPosition(i));
+			_crewallSizeList.push_back(bossShot->CWSize(i));
+		}
+		for (int i = 0; i < _crewallPosList.size(); i++)
+		{
+			if (BoxCollition(_player->Position(), _player->Size(), _crewallPosList[i], _crewallSizeList[i]))
+			{
+				_player->_hp -= 1;
+			}
+		}
+		_crewallPosList.clear();
+		_crewallSizeList.clear();
 	}
 
 	if (_boss->Shot() == true && _boss->Pattern() == 3 && bossShot->BulletCount() <= 4)
 	{
 		bossShot->AroundWall(_boss->Position());
+
+		for (int i = 0; i < bossShot->_aroundList.size(); i++)
+		{
+			_aroundPosList.push_back(bossShot->AWPosition(i));
+		}
+		for (int i = 0; i < _aroundPosList.size(); i++)
+		{
+			if (CircleCollition(_player->Position(), _player->Size(), _player->Radius(), _aroundPosList[i], bulletRad))
+			{
+				_player->_hp -= 1;
+			}
+		}
+		_aroundPosList.clear();
 	}
 
 	_player->Render();
@@ -87,6 +120,38 @@ bool GamePlayScene::Collition(const Vector2 plPos, Vector2 size, const Vector2 b
 	{
 		printf("true");
 		//DrawCircle(plPos.x, plPos.y, 5, GetColor(255, 255, 255), TRUE);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool GamePlayScene::CircleCollition(const Vector2 plPos, Vector2 size, float plRad, const Vector2 bulletPos, float bulletRad)
+{
+	auto plcentor = plPos + size / 2;
+
+	auto x = abs((plcentor.x + plRad) - (bulletPos.x + bulletRad));
+	auto y = abs((plcentor.y + plRad) - (bulletPos.y + bulletRad));
+
+	if (x*x + y * y <= (plRad + bulletRad)*(plRad + bulletRad))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool GamePlayScene::BoxCollition(const Vector2 plPos, Vector2 size, Vector2 bulletPos, Vector2 bulletSize)
+{
+	auto dx = abs((plPos.x + size.x / 2) - (bulletPos.x + bulletSize.x / 2));
+	auto dy = abs((plPos.y + size.y / 2) - (bulletPos.y + bulletSize.y / 2));
+
+	if (dx <= (size.x + bulletSize.x) / 2 && dy <= (size.y + bulletSize.y) / 2)
+	{
 		return true;
 	}
 	else
