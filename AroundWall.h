@@ -23,6 +23,8 @@ public:
 
 	void SetActive(bool value);
 
+	void setSamePlPos(bool value);
+
 	Vector2 Position()
 	{
 		return _pos;
@@ -40,5 +42,6 @@ private:
 	int _spown;	    //スポーンしてからの時間
 	int cnt;        //経過時間算出用
 	bool isActive;	//表示非表示
+	bool samePlPos;
 
 };

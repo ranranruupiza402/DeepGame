@@ -26,6 +26,8 @@ public:
 
 	Vector2 Position(int num);
 
+	Vector2 AWPosition(int num);
+
 	float* Radius();
 	
 	int BulletCount()
@@ -36,8 +38,8 @@ public:
 
 public:
 	std::vector<Bullet*>_shotList;
-	std::list<AroundW*>_aroundList;
-	std::list<CreateW*>_crewallList;
+	std::vector<AroundW*>_aroundList;
+	std::vector<CreateW*>_crewallList;
 	BulletCache _cache;
 	BulletCache _around;
 	BulletCache _crewall;
