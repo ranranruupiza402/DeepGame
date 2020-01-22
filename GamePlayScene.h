@@ -29,6 +29,8 @@ private:
 private:
 	std::vector < Vector2>_posList;
 	std::vector<Vector2>_aroundPosList;
+	std::vector<Vector2>_crewallPosList;
+	std::vector<Vector2>_crewallSizeList;
 
 	Boss _boss;
 	Lazer lazer;

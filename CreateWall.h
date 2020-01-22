@@ -26,11 +26,18 @@ public:
 		return _pos;
 	}
 
+	Vector2 Size()
+	{
+		return _size;
+	}
+	
+
 	void SetActive(bool value);
 
 private:
 	Vector2 _pos;
 	Vector2 _vel;
+	Vector2 _size;
 	int _posNum;
 	bool isActive;
 };
