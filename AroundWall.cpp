@@ -67,7 +67,7 @@ void AroundW::Around()
 		_vel = Vector2(4, 0.001);
 	}
 	//êiçsï˚å¸ÅFâ∫
-	if (/*_pos.x <= _plPos.x||*/_pos.x>=Define::WIN_WIDTH-20&&_pos.y-20>=0)
+	if (_pos.x <= _plPos.x||_pos.x>=Define::WIN_WIDTH-20&&_pos.y-20>=0)
 	{
 		_vel = Vector2(-0.01, 4);
 	}
@@ -78,4 +78,9 @@ void AroundW::Around()
 void AroundW::SetActive(bool value)
 {
 	isActive = value;
+}
+
+void AroundW::setSamePlPos(bool value)
+{
+	samePlPos = value;
 }

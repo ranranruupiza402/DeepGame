@@ -18,12 +18,15 @@ public:
 	void draw()override;
 
 	bool Collition(const Vector2 plPos,Vector2 size, const Vector2 bulletPos,float *bulletRad);
+
+	bool CircleCollition(const Vector2 plPos, Vector2 size, float plRad, const Vector2 bulletPos, float bulletRad);
 private:
 	std::shared_ptr<Player>_player;
 	std::shared_ptr<TileMap>_tileMap;
 	std::shared_ptr<BossShot>bossShot;
 private:
 	std::vector < Vector2>_posList;
+	std::vector<Vector2>_aroundPosList;
 
 	Boss _boss;
 	Lazer lazer;

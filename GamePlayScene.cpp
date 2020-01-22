@@ -40,11 +40,9 @@ void GamePlayScene::update()
 		}
 		for (int i = 0;i<_posList.size(); i++)
 		{
-			Collition(_player->Position(), _player->Size(), _posList[i], bossShot->Radius());
-			//_posList.push_back(bossShot->Position());
-			/*_posList[i]=_posList.back();
-			_posList.pop_back();
-			_posList.clear*/
+		//	Collition(_player->Position(), _player->Size(), _posList[i], bossShot->Radius());
+
+			CircleCollition(_player->Position(), _player->Size(), _player->Radius(), _posList[i], bulletRad);
 		}
 		_posList.clear();
 	}
@@ -58,6 +56,15 @@ void GamePlayScene::update()
 	if (_boss.Shot() == true && _boss.Pattern() == 3&&bossShot->BulletCount()<=4)
 	{
 			bossShot->AroundWall(_boss.Position());
+
+			for (int i = 0; i < bossShot->_aroundList.size; i++)
+			{
+				_aroundPosList.push_back(bossShot->AWPosition(i));
+			}
+			for (int i = 0; i < _aroundPosList.size; i++)
+			{
+				CircleCollition(_player->Position(), _player->Size(), _player->Radius(), _aroundPosList[i], bulletRad);
+			}
 	}
 
 	//if(i%60==0)
@@ -86,6 +93,23 @@ bool GamePlayScene::Collition(const Vector2 plPos,Vector2 size,const Vector2 bul
 		printf("true");
 		//DrawCircle(plPos.x, plPos.y, 5, GetColor(255, 255, 255), TRUE);
     	return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool GamePlayScene::CircleCollition(const Vector2 plPos, Vector2 size, float plRad, const Vector2 bulletPos, float bulletRad)
+{
+	auto plcentor = plPos + size / 2;
+
+	auto x = abs((plcentor.x + plRad) - (bulletPos.x + bulletRad));
+	auto y = abs((plcentor.y + plRad) - (bulletPos.y + bulletRad));
+
+	if (x*x + y * y <= (plRad  + bulletRad)*(plRad + bulletRad))
+	{
+		return true;
 	}
 	else
 	{
