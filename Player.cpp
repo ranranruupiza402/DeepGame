@@ -21,6 +21,7 @@ void Player::Start()
 	playerEnd = FALSE;
 	MaxJumpCount = 2;
 	JumpCount = 0;
+	_seHandle = LoadSoundMem("sound\\jump06.mp3");
 	
 	
 }
@@ -64,6 +65,7 @@ void Player::Update()
 	{
 		Jump = 20;
 		Jump2 = TRUE;
+		PlaySoundMem(_seHandle, DX_PLAYTYPE_NORMAL);
 	}
 	if (Jump2 == TRUE && Jump3&&FALSE&&Jump > 0)
 	{

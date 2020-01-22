@@ -38,5 +38,8 @@ private:
 
 	float* bullRad;
 	float bulletRad = 8.0f;
+
+	int _bgmHandle;
+	int _seHandle;
 };
 

@@ -19,11 +19,14 @@ void Boss::Start()
 	aroundShot = false;
 	shot = false;
 	air = false;
+	_img = LoadGraph("Texture\\boss.png");
 }
 
 //•`‰æ
 void Boss::Render()
 {
+	SetTransColor(255, 255, 0);
+	DrawGraph(_position.x, _position.y, _img, TRUE);
 	DrawBox(_position.x, _position.y, _position.x + _size.x, _position.y + _size.y, GetColor(0, 0, 255), FALSE);
 }
 

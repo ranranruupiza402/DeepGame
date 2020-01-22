@@ -7,5 +7,7 @@ public:
 	virtual ~TitleScene() = default;
 	void update() override;
 	void draw() override;
+private:
+	int _seHandle;
 };
 

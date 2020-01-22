@@ -63,4 +63,5 @@ public:
 	bool Jump3;
 	bool playerEnd;
 	Bullet _bossShot;
+	int _seHandle;
 };

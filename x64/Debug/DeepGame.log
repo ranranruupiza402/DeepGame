@@ -1,12 +1,4 @@
-﻿  GamePlayScene.cpp
-  Looper.cpp
-  Player.cpp
-c:\users\k018a1498\desktop\deepgame\player.cpp(30): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-c:\users\k018a1498\desktop\deepgame\player.cpp(31): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  PlayerAttak.cpp
-c:\users\k018a1498\desktop\deepgame\playerattak.cpp(26): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  TileMap.cpp
-  TitleScene.cpp
-  コードを生成中...
-  LINK : 前回のインクリメンタル リンクで C:\Users\K018A1498\Desktop\DeepGame\x64\Debug\DeepGame.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+﻿  Boss.cpp
+c:\users\k018a1498\desktop\deepgame\boss.cpp(29): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\k018a1498\desktop\deepgame\boss.cpp(30): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   DeepGame.vcxproj -> C:\Users\K018A1498\Desktop\DeepGame\x64\Debug\DeepGame.exe

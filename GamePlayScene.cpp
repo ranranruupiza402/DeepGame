@@ -1,5 +1,5 @@
-#include "GamePlayScene.h"
 #include<DxLib.h>
+#include "GamePlayScene.h"
 #include "TileMap.h"
 #include "Define.h"
 
@@ -16,11 +16,15 @@ GamePlayScene::GamePlayScene(IOnSceneChangedListener * impl, const Parameter & p
 	_player->Start();
 	bossShot = make_shared<BossShot>();
 	bullRad = &bulletRad;
+	_bgmHandle = LoadSoundMem("sound\\sentou.mp3");
+	_seHandle = LoadSoundMem("sound\\hit.mp3");
+	PlaySoundMem(_bgmHandle, DX_PLAYTYPE_LOOP);
 	//i = 0;
 }
 
 void GamePlayScene::update()
 {
+	
 	_player->Update();	
 
 	auto info = _tileMap->FindTileHitInfo(_player->Position(),_player->Size(),_player->Velocity());
@@ -49,6 +53,7 @@ void GamePlayScene::update()
 			if (CircleCollition(_player->Position(), _player->Size(), _player->Radius(), _posList[i], bulletRad))
 			{
 				_player->_hp -= 1;
+				PlaySoundMem(_seHandle, DX_PLAYTYPE_NORMAL);
 			}
 		}
 		_posList.clear();
@@ -69,6 +74,7 @@ void GamePlayScene::update()
 			if (BoxCollition(_player->Position(), _player->Size(), _crewallPosList[i], _crewallSizeList[i]))
 			{
 				_player->_hp -= 1;
+				PlaySoundMem(_seHandle, DX_PLAYTYPE_NORMAL);
 			}
 		}
 		_crewallPosList.clear();
@@ -88,6 +94,7 @@ void GamePlayScene::update()
 			if (CircleCollition(_player->Position(), _player->Size(), _player->Radius(), _aroundPosList[i], bulletRad))
 			{
 				_player->_hp -= 1;
+				PlaySoundMem(_seHandle, DX_PLAYTYPE_NORMAL);
 			}
 		}
 		_aroundPosList.clear();
@@ -101,6 +108,7 @@ void GamePlayScene::update()
 	if (dx < (_player->Size().x + _boss->Size().x) / 2 && dy < (_player->Size().y + _boss->Size().y) / 2)
 	{
 		_player->_hp -= 1;
+		PlaySoundMem(_seHandle, DX_PLAYTYPE_NORMAL);
 	}
 	DrawBox(0, 685, Define::WIN_WIDTH, Define::WIN_HEGHT, GetColor(0, 255, 255), FALSE);
 
