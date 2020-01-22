@@ -1,2 +1,27 @@
 ﻿  GamePlayScene.cpp
-  DeepGame.vcxproj -> C:\Users\K018A1498\Desktop\DeepGame\x64\Debug\DeepGame.exe
+c:\users\k018a1498\desktop\deepgame\gameplayscene.cpp(60): error C3867: 'std::vector<AroundW *,std::allocator<_Ty>>::size': 非標準の構文です。メンバーにポインタを作成するには '&' を使用してください
+          with
+          [
+              _Ty=AroundW *
+          ]
+c:\users\k018a1498\desktop\deepgame\gameplayscene.cpp(60): error C2446: '<': 'unsigned __int64 (__cdecl std::vector<AroundW *,std::allocator<_Ty>>::* )(void) noexcept const' 型から 'int' 型への変換ができません。
+          with
+          [
+              _Ty=AroundW *
+          ]
+  c:\users\k018a1498\desktop\deepgame\gameplayscene.cpp(60): note: この変換が可能なコンテキストはありません。
+c:\users\k018a1498\desktop\deepgame\gameplayscene.cpp(64): error C3867: 'std::vector<Vector2,std::allocator<_Ty>>::size': 非標準の構文です。メンバーにポインタを作成するには '&' を使用してください
+          with
+          [
+              _Ty=Vector2
+          ]
+c:\users\k018a1498\desktop\deepgame\gameplayscene.cpp(64): error C2446: '<': 'unsigned __int64 (__cdecl std::vector<Vector2,std::allocator<_Ty>>::* )(void) noexcept const' 型から 'int' 型への変換ができません。
+          with
+          [
+              _Ty=Vector2
+          ]
+  c:\users\k018a1498\desktop\deepgame\gameplayscene.cpp(64): note: この変換が可能なコンテキストはありません。
+  Looper.cpp
+  TileMap.cpp
+  TitleScene.cpp
+  コードを生成中...

@@ -20,6 +20,8 @@ public:
 	bool Collition(const Vector2 plPos,Vector2 size, const Vector2 bulletPos,float *bulletRad);
 
 	bool CircleCollition(const Vector2 plPos, Vector2 size, float plRad, const Vector2 bulletPos, float bulletRad);
+
+	bool BoxCollition(const Vector2 plPos, Vector2 size, const Vector2 bulletPos, Vector2 bulletSize);
 private:
 	std::shared_ptr<Player>_player;
 	std::shared_ptr<TileMap>_tileMap;
