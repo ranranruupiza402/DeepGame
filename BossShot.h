@@ -28,6 +28,10 @@ public:
 
 	Vector2 AWPosition(int num);
 
+	Vector2 CWPosition(int num);
+
+	Vector2 CWSize(int num);
+
 	float* Radius();
 	
 	int BulletCount()

@@ -109,6 +109,24 @@ Vector2 BossShot::AWPosition(int num)
 	return _aroundList[num]->Position();
 }
 
+Vector2 BossShot::CWPosition(int num)
+{
+	if (_crewallList.size() < num)
+	{
+		return Vector2(0, 0);
+	}
+	return _crewallList[num]->Position();
+}
+
+Vector2 BossShot::CWSize(int num)
+{
+	if (_crewallList.size() < num)
+	{
+		return Vector2(0, 0);
+	}
+	return _crewallList[num]->Size();
+}
+
 float* BossShot::Radius()
 {
 	for (auto it = _shotList.begin(); it != _shotList.end();)
