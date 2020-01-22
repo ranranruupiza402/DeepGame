@@ -45,10 +45,6 @@ void GamePlayScene::update()
 		for (int i = 0; i < _posList.size(); i++)
 		{
 			Collition(_player->Position(), _player->Size(), _posList[i], bossShot->Radius());
-			//_posList.push_back(bossShot->Position());
-			/*_posList[i]=_posList.back();
-			_posList.pop_back();
-			_posList.clear*/
 		}
 		_posList.clear();
 	}

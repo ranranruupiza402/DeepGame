@@ -98,24 +98,6 @@ Vector2 BossShot::Position(int num)
 	}
 
 		return _shotList[num]->Position();
-		
-		/*int hoge = test;
-
-	for (auto&& bullet:_shotList)
-	{
-		_posList.push_back(bullet->Position&Position);
-	}*/
-
-	/*for (auto it = _shotList.begin(); it != _shotList.end();)
-	{
-		if ((*it)->Position().x <= Define::WIN_WIDTH || (*it)->Position().y <= Define::WIN_HEGHT
-			|| (*it)->Position().x >= 0 || (*it)->Position().y >= 0)
-		{ 
-			return (*it)->Position();
-			continue;
-        }
-		++it;
-    }*/
 }
 
 Vector2 BossShot::AWPosition(int num)
